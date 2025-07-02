@@ -6,6 +6,12 @@
 # necessary certificates, and starts the containers.
 # ---------------------------------------------------------
 
+# Load .env
+set -o allexport
+# shellcheck disable=SC1091
+source .env
+set +o allexport
+
 # Fix permissions for the script
 chmod +x ./configs/seaweed-config.sh
 chmod +x ./configs/haproxy-entrypoint.sh
@@ -15,12 +21,6 @@ if ! command -v docker-compose &> /dev/null; then
   echo "docker-compose could not be found. Please install it first."
   exit 1
 fi
-
-# Load .env
-set -o allexport
-# shellcheck disable=SC1091
-source .env
-set +o allexport
 
 echo "Loading environment variables from .env file..."
 # Sanitize and escape subject based on OS

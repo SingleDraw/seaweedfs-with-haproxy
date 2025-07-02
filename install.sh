@@ -13,6 +13,8 @@ source .env
 set +o allexport
 
 # Fix permissions for the script
+chmod +x ./bin/update
+chmod +x ./bin/destroy
 chmod +x ./configs/seaweed-config.sh
 chmod +x ./configs/haproxy-entrypoint.sh
 

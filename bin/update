@@ -1,0 +1,12 @@
+#!/bin/bash
+
+chmod +x ./bin/destroy
+# shellcheck disable=SC1091
+. ./bin/destroy
+
+# cleans up the environment, and optionally removes the Docker network.
+# ---------------------------------------------------------
+git stash
+git pull origin main
+chmod +x ./install
+sudo ./install

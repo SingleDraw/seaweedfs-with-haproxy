@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# ---------------------------------------------------------
+# SeaweedFS Docker Compose Destroy Script
+# This script stops and removes all SeaweedFS containers,
+sudo docker-compose down
+sudo docker-compose rm -f
+sudo docker-compose rm -vf # Remove volumes as well
+
+# --eof--

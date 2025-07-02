@@ -25,9 +25,9 @@ services:
       S3_SECRET_KEY_FILE: /run/secrets/s3_secret_key 
       MASTER_HOST: sfs_master
     ports:
-      - 127.0.0.1:9333:9333     # Master server port
-      - 127.0.0.1:19333:19333   # Volume server communication port
-      - 127.0.0.1:9324:9324     # Metrics port
+      - 9333:9333     # Master server port
+      - 19333:19333   # Volume server communication port
+      - 9324:9324     # Metrics port
     command:
       - master 
       - -ip=sfs_master
@@ -51,9 +51,9 @@ services:
     image: chrislusf/seaweedfs
     container_name: sfs_volume
     ports:
-      - 127.0.0.1:8085:8085     # Volume server UI port
-      - 127.0.0.1:18080:18080   # Another metrics/debug port
-      - 127.0.0.1:9325:9325     # Metrics port
+      - 8085:8085     # Volume server UI port
+      - 18080:18080   # Another metrics/debug port
+      - 9325:9325     # Metrics port
     command:
       - volume 
       # - -ip=localhost                    
@@ -76,9 +76,9 @@ services:
     image: chrislusf/seaweedfs
     container_name: sfs_filer
     ports:
-      - 127.0.0.1:8899:8899     # Filer UI port
-      - 127.0.0.1:18888:18888   # Metrics port
-      - 127.0.0.1:9326:9326     # Metrics port
+      - 8899:8899     # Filer UI port
+      - 18888:18888   # Metrics port
+      - 9326:9326     # Metrics port
     command:
       - filer
       # - -ip=localhost
@@ -101,9 +101,9 @@ services:
     image: chrislusf/seaweedfs
     container_name: sfs_s3
     ports:
-      - 127.0.0.1:8333:8333  # S3-compatible HTTP port (for testing)
-      - 127.0.0.1:8334:8334  # S3-compatible HTTPS port
-      - 127.0.0.1:9327:9327  # Metrics port
+      - 8333:8333  # S3-compatible HTTP port (for testing)
+      - 8334:8334  # S3-compatible HTTPS port
+      - 9327:9327  # Metrics port
     environment:
       S3_ACCESS_KEY_FILE: /run/secrets/s3_access_key
       S3_SECRET_KEY_FILE: /run/secrets/s3_secret_key

@@ -18,12 +18,25 @@ frontend http_front
     bind *:80
     mode http
 
-    stick-table type ip size 1m expire 60s store http_req_rate(60s)
-    tcp-request content track-sc0 src
-    acl too_many_requests sc_http_req_rate(0) gt 10
-    http-request deny status 429 if too_many_requests
+    # Define stick-table for tracking IP request rate and auth failures
+    stick-table type ip size 1m expire 10m store gpc0,gpc0_rate(10s)
 
+    # Track source IP in stick-table
+    http-request track-sc0 src
+
+    # Authentication ACL
     acl valid_auth http_auth(users)
+    
+    # Check if too many auth failures from this IP
+    acl too_many_auth_fail sc0_gpc0_rate gt 3
+
+    # Deny if too many auth failures
+    http-request deny if too_many_auth_fail
+
+    # Increment counter on auth failure (when auth is required but not valid)
+    http-request sc-inc-gpc0(0) if !valid_auth
+
+    # Ask for auth if not valid
     http-request auth realm SeaweedFS if !valid_auth
 
     default_backend seaweedfs_filer

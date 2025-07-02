@@ -1,0 +1,4 @@
+volumes/filer/*
+volumes/volume/*
+.env
+/certs/*

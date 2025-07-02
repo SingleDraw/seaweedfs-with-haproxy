@@ -8,5 +8,5 @@ chmod +x ./bin/destroy
 # ---------------------------------------------------------
 git stash
 git pull origin main
-chmod +x ./install
-sudo ./install
+chmod +x ./install.sh
+sudo ./install.sh

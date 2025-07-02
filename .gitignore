@@ -1,3 +1,4 @@
+.knowledge
 volumes/filer/*
 volumes/volume/*
 .env

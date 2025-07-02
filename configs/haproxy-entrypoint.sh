@@ -33,7 +33,7 @@ backend seaweedfs_filer
     server filer1 sfs_filer:8899 check
 
 userlist users
-    user $USER insecure-password $PASSWORD
+    user $HAPROXYUSER insecure-password $HAPROXYPASSWORD
 EOF
 umask 022
 

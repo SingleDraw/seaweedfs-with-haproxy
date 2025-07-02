@@ -5,8 +5,8 @@ services:
     ports:
       - 8803:80
     environment:
-      - USER=${USER}
-      - PASSWORD=${PASSWORD}
+      - HAPROXYUSER=${HAPROXYUSER}
+      - HAPROXYPASSWORD=${HAPROXYPASSWORD}
     volumes:
       - ./configs/haproxy-entrypoint.sh:/usr/local/bin/haproxy-entrypoint.sh
     entrypoint: ["/usr/local/bin/haproxy-entrypoint.sh"]

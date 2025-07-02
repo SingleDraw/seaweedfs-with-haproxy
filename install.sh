@@ -6,6 +6,10 @@
 # necessary certificates, and starts the containers.
 # ---------------------------------------------------------
 
+# Fix permissions for the script
+chmod +x ./configs/seaweed-config.sh
+chmod +x ./configs/haproxy-entrypoint.sh
+
 # Ensure docker compose is installed
 if ! command -v docker-compose &> /dev/null; then
   echo "docker-compose could not be found. Please install it first."

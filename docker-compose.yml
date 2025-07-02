@@ -38,7 +38,7 @@ services:
     entrypoint:
       - /sw-conf.sh
     volumes:
-      - ./configs/seaweed-config.sh:/sw-conf.sh:ro
+      - ./configs/seaweed-config.sh:/sw-conf.sh
     restart: always
     networks:
       - amar_s3
